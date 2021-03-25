@@ -186,7 +186,6 @@ void setup ()
   }
 
   Particle.function("entropy", getEntropy);
-  Serial.begin(9600);
 }
 
 
@@ -200,16 +199,12 @@ void loop ()
 
   // If we are capable of super computation, just run this to completion.
   // "But you are not resampeling!", you might say. We are in a black hole remember? There is no light!
-  while (Super::check()) stepUndec (sample);
+  while (Super::check())
+    stepUndec (sample);
 
   // Are we being observed?
-
-  Serial.print(sample);
-  Serial.print(", ");
-  Serial.print(darkness);
-  Serial.print(", ");
-  Serial.println(tolerance);
-  if (sample > darkness + tolerance) onObserve ();
+  if (sample > darkness + tolerance)
+    onObserve ();
 
   mingle ();
 
@@ -219,4 +214,16 @@ void loop ()
     delete spin;
     spin = nullptr;
   }
+
+  /* FUTURE:
+
+     This is just to make our project slightly more interesting.
+
+     If not for that check, once we have decided a state we're stuck-
+     that's our state for the rest of ethernity now.
+
+     Now instead whenever you look at the photon, the LED might be
+     be on, or it might be off, and the decicion is made the
+     moment you look.
+  */
 }
