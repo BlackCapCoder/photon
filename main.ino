@@ -2,17 +2,23 @@
 #include <stddef.h>
 #include <limits.h>
 
-
 #define universeDecayRate 500
 #define sexualDeprivation 60000
 
+/* Hello, future blackcap here.
+
+   Yes- I absolutely did that on purpose!
+
+   The sole purpose of having those variables is
+   so that the first thing teach reads is
+   "universeDecayRate" and "sexualDeprivation".
+*/
 
 constexpr int pin_spin   = D0;
 constexpr int pin_pr_inp = A0;
 constexpr int pin_pr_pwr = A5;
 
 unsigned darkness, tolerance;
-
 
 
 // turing machine used to generate undecidability
@@ -24,7 +30,6 @@ void stepUndec (unsigned short sample)
   if (undecidability.isHalt()) exit (EXIT_SUCCESS); // Actually causes the particle to reboot
 }
 
-
 // We expose this through a particle function
 unsigned short getEntropy (String)
 {
@@ -33,6 +38,24 @@ unsigned short getEntropy (String)
     ret ^= undecidability.mem[i];
   return ret;
 }
+
+
+/* Hi- future cap' again!
+
+   So here's the setup:
+
+   We have this photon chip, with a photoresistor and a singular LED hooked up to it-
+   which I imagine that the user now places in a box.
+
+   While in the box, the state of the LED is undefined- IE: in a superposition-
+   but the moment he opens the box we have to decide on a state.
+
+   Up next I implement a dating hub for finding a partner (that's the entanglement),
+   and if either chip is observed (IE: we open the box), the other
+   has to pick the opposite state.
+
+   The code is perfectly boring so skip it if you'd like.
+*/
 
 
 // We may or may not be entangled to another photon
@@ -116,7 +139,6 @@ void mingle ()
 }
 
 
-
 void setup ()
 {
   pinMode      (pin_spin,   OUTPUT);
@@ -166,7 +188,6 @@ void setup ()
   Particle.function("entropy", getEntropy);
   Serial.begin(9600);
 }
-
 
 
 void loop ()
